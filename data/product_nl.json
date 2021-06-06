@@ -1,0 +1,1417 @@
+{
+    "Shop_Done": [
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "dạ e cám ơn c yêu nhiều ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Chúc c buổi tối vv nha"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "dạ bye chị"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "dạ c"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "dạ"
+        }
+    ],
+    "Shop_request": [
+        {
+            "request_slots": [
+                "color_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ chị muốn hỏi màu j ạ"
+        },
+        {
+            "request_slots": [
+                "material_product"
+            ],
+            "inform_slots": [],
+            "text": "c cần chất liệu j ạ"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [],
+            "text": "c muốn tầm giá bn"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [],
+            "text": "c lấy bn cái ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ chị muốn hỏi mẫu nào v ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "chị chụp mẫu gửi shop shop tư vấn cho chị ạ"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [],
+            "text": "chị cần sz j ak"
+        },
+        {
+            "request_slots": [
+                "color_product"
+            ],
+            "inform_slots": [],
+            "text": "chị muốn hỏi với màu gì ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ c gửi mẫu giúp e c ơi"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "c gửi  lại mẫu giúp e nha"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ chị hỏi size gì ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "Mẫu nào c ơi"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "Dạ c biết mã bn k ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "mình vui lòng chụp sản phẩm giúp e ạ"
+        }
+    ],
+    "Shop_inform": [
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    8,
+                    "material_product"
+                ]
+            ],
+            "text": "Dạ nhung ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    9,
+                    20,
+                    "name_product"
+                ]
+            ],
+            "text": "dạ e còn chân váy dạ ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    14,
+                    17,
+                    "amount_product"
+                ]
+            ],
+            "text": "bây giờ bên e còn á c"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    6,
+                    "amount_product"
+                ]
+            ],
+            "text": "Dạ còn nha chị, đặt hàng để lại sdt và địa chỉ để e chốt đơn nhé."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    7,
+                    "cost_product"
+                ]
+            ],
+            "text": "da 159k ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    8,
+                    12,
+                    "color_product"
+                ]
+            ],
+            "text": "set còn nude ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    6,
+                    "name_product"
+                ]
+            ],
+            "text": "Set LV"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    8,
+                    "name_product"
+                ]
+            ],
+            "text": "Chân váy"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    6,
+                    7,
+                    "size_product"
+                ]
+            ],
+            "text": "có sz L"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "color_product"
+                ]
+            ],
+            "text": "còn hồng ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    3,
+                    "amount_product"
+                ]
+            ],
+            "text": "còn ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "color_product"
+                ]
+            ],
+            "text": "màu xanh á chị"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "cost_product"
+                ]
+            ],
+            "text": "875k c"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    6,
+                    "amount_product"
+                ]
+            ],
+            "text": "Dạ còn"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "cost_product"
+                ]
+            ],
+            "text": "375k á c"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "cost_product"
+                ]
+            ],
+            "text": "1094 ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    5,
+                    "cost_product"
+                ]
+            ],
+            "text": "1767K Ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    2,
+                    "cost_product"
+                ]
+            ],
+            "text": "4k c ơi"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    9,
+                    "cost_product"
+                ]
+            ],
+            "text": "là 1.781k ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    6,
+                    "cost_product"
+                ]
+            ],
+            "text": "Dạ 720"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    15,
+                    19,
+                    "material_product"
+                ]
+            ],
+            "text": "dạ mẫu này vải jean ạ"
+        }
+    ],
+    "Shop_not-found": [
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [],
+            "text": "sr c ạ, dạ bên e hết size rồi ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "không có sản phẩm c yêu cầu ạ."
+        },
+        {
+            "request_slots": [
+                "color_product"
+            ],
+            "inform_slots": [],
+            "text": "c ơi bên e ko có màu chị cần rồi ạ"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ chị ơi, bên e ko có sản phẩm giá như vậy ạ"
+        },
+        {
+            "request_slots": [
+                "material_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ sr chị, bên e ko có chất liệu chị yêu cầu ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ c không có mẫu này ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "dạ chị bên em ko có sản phẩm này ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "xin lỗi chị iu ạ, bên em hiện tại chưa cung cấp sản phẩm này ạ"
+        }
+    ],
+    "Inform": [
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    8,
+                    10,
+                    "color_product"
+                ]
+            ],
+            "text": "cái màu đỏ á (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    6,
+                    "color_product"
+                ]
+            ],
+            "text": "màu đỏ nhen (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    6,
+                    "color_product"
+                ]
+            ],
+            "text": "màu đỏ (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    9,
+                    11,
+                    "amount_product"
+                ]
+            ],
+            "text": "c cần cỡ 10 cái (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "cost_product"
+                ]
+            ],
+            "text": "cái 100k nè (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    9,
+                    12,
+                    "height_customer"
+                ]
+            ],
+            "text": "mình cao 1m2 (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    3,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m2 nha (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    3,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m2 á (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    3,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m2 (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    8,
+                    12,
+                    "material_product"
+                ]
+            ],
+            "text": "cái vải jean bạn ei (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    10,
+                    "material_product"
+                ]
+            ],
+            "text": "cái cotton nè (manual gen)"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    10,
+                    "name_product"
+                ],
+                [
+                    17,
+                    17,
+                    "size_product"
+                ]
+            ],
+            "text": "Chân váy da size L"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    7,
+                    "name_product"
+                ],
+                [
+                    8,
+                    10,
+                    "color_product"
+                ]
+            ],
+            "text": "đầm hoa tím"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    7,
+                    "color_product"
+                ],
+                [
+                    11,
+                    14,
+                    "height_customer"
+                ],
+                [
+                    21,
+                    24,
+                    "weight_customer"
+                ]
+            ],
+            "text": "Mau nude c.1m53 nang 51kg"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    5,
+                    5,
+                    "size_product"
+                ]
+            ],
+            "text": "Size M chị nha"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "weight_customer"
+                ]
+            ],
+            "text": "52 kg"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    5,
+                    9,
+                    "weight_customer"
+                ]
+            ],
+            "text": "Nặng 55 kg"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    5,
+                    5,
+                    "size_product"
+                ]
+            ],
+            "text": "Size M ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    2,
+                    "name_product"
+                ],
+                [
+                    9,
+                    10,
+                    "size_product"
+                ]
+            ],
+            "text": "Bra size 34 nha shop"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    6,
+                    9,
+                    "height_customer"
+                ],
+                [
+                    24,
+                    27,
+                    "weight_customer"
+                ]
+            ],
+            "text": "E cao 1m69,eo63, mông92,51kg"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    6,
+                    "name_product"
+                ]
+            ],
+            "text": "Sét sọc nay ne e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    3,
+                    5,
+                    "size_product"
+                ]
+            ],
+            "text": "sz nhỏ ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    0,
+                    "size_product"
+                ]
+            ],
+            "text": "M"
+        }
+    ],
+    "Request": [
+        {
+            "request_slots": [
+                "color_product"
+            ],
+            "inform_slots": [],
+            "text": "Còn màu nào b"
+        },
+        {
+            "request_slots": [
+                "color_product"
+            ],
+            "inform_slots": [],
+            "text": "có màu j á"
+        },
+        {
+            "request_slots": [
+                "material_product"
+            ],
+            "inform_slots": [],
+            "text": "làm bằng j e"
+        },
+        {
+            "request_slots": [
+                "material_product"
+            ],
+            "inform_slots": [],
+            "text": "chất liệu j z"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [],
+            "text": "Còn k ạ"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [],
+            "text": "Con ko e"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [],
+            "text": "Bn tiền e"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [],
+            "text": "Bn tiên em chị quên rồi"
+        },
+        {
+            "request_slots": [
+                "color_product"
+            ],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "name_product"
+                ]
+            ],
+            "text": "cái quần này có màu gì em"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [],
+            "text": "Dạ shop còn size jk ạk"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
+            "text": "còn cái nào khác không ạ?"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [],
+            "text": "bao nhiêu"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [
+                [
+                    6,
+                    8,
+                    "amount_product"
+                ]
+            ],
+            "text": "c cần 10 cái, bn tiền z e"
+        },
+        {
+            "request_slots": ["cost_product"],
+            "inform_slots": [
+                [
+                    31,
+                    32,
+                    "size_product"
+                ]
+            ],
+            "text": "áo này bao tiền, lấy mình size M"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [
+                [
+                    18,
+                    24,
+                    "name_product"
+                ]
+            ],
+            "text": " Cho mình xin giá áo len nhé"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [
+                [
+                    10,
+                    16,
+                    "material_product"
+                ]
+            ],
+            "text": "Chất liệu cotton ạ. Bn shop"
+        },
+        {
+            "request_slots": [
+                "cost_product"
+            ],
+            "inform_slots": [
+                [
+                    8,
+                    10,
+                    "color_product"
+                ]
+            ],
+            "text": "Cái màu đỏ bao tiền"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    14,
+                    18,
+                    "color_product"
+                ]
+            ],
+            "text": "e ơi, còn màu xanh ko"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    8,
+                    12,
+                    "color_product"
+                ]
+            ],
+            "text": "cái màu hồng còn ko"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    8,
+                    11,
+                    "cost_product"
+                ]
+            ],
+            "text": "còn cái 99k này ko shop"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "cost_product"
+                ]
+            ],
+            "text": "cái 100k còn ko"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    9,
+                    10,
+                    "size_product"
+                ]
+            ],
+            "text": "Còn size M k c"
+        },
+        {
+            "request_slots": ["amount_product"],
+            "inform_slots": [
+                [
+                    9,
+                    11,
+                    "material_product"
+                ]
+            ],
+            "text": "loại vải nỉ này còn không e"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    6,
+                    "name_product"
+                ]
+            ],
+            "text": "Áo bra còn ko em"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    27,
+                    30,
+                    "name_product"
+                ]
+            ],
+            "text": "Em ơi kiểm tra dùm chị cái jum này còn hàng ko em"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    4,
+                    11,
+                    "name_product"
+                ]
+            ],
+            "text": "Còn chấm bi ko hả em"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [],
+            "text": "Này con ko e"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    8,
+                    "name_product"
+                ]
+            ],
+            "text": "Áo khoác hết hả e"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [],
+            "text": "Cái này còn k c ơi"
+        },
+        {
+            "request_slots": ["material_product"],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "color_product"
+                ]
+            ],
+            "text": "màu xanh này nà bạn chất liệu gì"
+        },
+        {
+            "request_slots": ["material_product"],
+            "inform_slots": [
+                [
+                    4,
+                    5,
+                    "amount_product"
+                ]
+            ],
+            "text": "lấy 3 cái, này làm bằng gì"
+        },
+        {
+            "request_slots": ["material_product"],
+            "inform_slots": [
+                [
+                    0,
+                    7,
+                    "name_product"
+                ]
+            ],
+            "text": "váy hoa này vải gì"
+        },
+        {
+            "request_slots": ["material_product"],
+            "inform_slots": [
+                [
+                    5,
+                    6,
+                    "size_product"
+                ]
+            ],
+            "text": "size L bạn, này chất liệu gì"
+        },
+        {
+            "request_slots": ["material_product"],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "cost_product"
+                ]
+            ],
+            "text": "200k nha, vải gì vậy em"
+        },
+        {
+            "request_slots": ["size_product"],
+            "inform_slots": [
+                [
+                    9,
+                    10,
+                    "amount_product"
+                ]
+            ],
+            "text": "mình cần 2 cái, có size gì á"
+        },
+        {
+            "request_slots": ["size_product"],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "cost_product"
+                ]
+            ],
+            "text": "cái 200k có size k"
+        },
+        {
+            "request_slots": ["size_product"],
+            "inform_slots": [
+                [
+                    4,
+                    7,
+                    "color_product"
+                ]
+            ],
+            "text": "màu đen còn size gì"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    13,
+                    "name_product"
+                ]
+            ],
+            "text": "Áo len mickey có size Ko ạ"
+        },
+        {
+            "request_slots": ["size_product"],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "material_product"
+                ]
+            ],
+            "text": "vải thun đi, có size gì á"
+        },
+        {
+            "request_slots": ["color_product"],
+            "inform_slots": [
+                [
+                    5,
+                    6,
+                    "size_product"
+                ]
+            ],
+            "text": "Size S này có màu gì nữa (manual gen)"
+        },
+        {
+            "request_slots": ["color_product"],
+            "inform_slots": [
+                [
+                    22,
+                    23,
+                    "amount_product"
+                ]
+            ],
+            "text": "có màu gì á, mình lấy 2 cái"
+        },
+        {
+            "request_slots": ["color_product"],
+            "inform_slots": [
+                [
+                    5,
+                    8,
+                    "material_product"
+                ]
+            ],
+            "text": "bằng lụa thì có màu gì"
+        },
+        {
+            "request_slots": ["color_product"],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "cost_product"
+                ]
+            ],
+            "text": "cái 200k có màu gì á"
+        },
+        {
+            "request_slots": ["color_product"],
+            "inform_slots": [
+                [
+                    18,
+                    19,
+                    "size_product"
+                ]
+            ],
+            "text": "còn màu j b, size L á"
+        },
+        {
+            "request_slots": ["color_product"],
+            "inform_slots": [
+                [
+                    0,
+                    8,
+                    "name_product"
+                ]
+            ],
+            "text": "Quần hóa này còn màu j"
+        },
+        {
+            "request_slots": ["name_product"],
+            "inform_slots": [
+                [
+                    15,
+                    17,
+                    "color_product"
+                ]
+            ],
+            "text": "có cái nào màu đỏ ko"
+        },
+        {
+            "request_slots": ["name_product"],
+            "inform_slots": [
+                [
+                    15,
+                    16,
+                    "size_product"
+                ]
+            ],
+            "text": "còn cái nào sz L ko b"
+        },
+        {
+            "request_slots": ["name_product"],
+            "inform_slots": [
+                [
+                    17,
+                    20,
+                    "cost_product"
+                ]
+            ],
+            "text": "còn cái nào dưới 99k ko"
+        },
+        {
+            "request_slots": ["name_product"],
+            "inform_slots": [
+                [
+                    15,
+                    19,
+                    "material_product"
+                ]
+            ],
+            "text": "có cái nào vải thun ko"
+        },
+        {
+            "request_slots": ["name_product"],
+            "inform_slots": [
+                [
+                    15,
+                    17,
+                    "amount_product"
+                ]
+            ],
+            "text": "còn cái nào đủ 10 cái ko"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    9,
+                    14,
+                    "name_product"
+                ],
+                [
+                    29,
+                    31,
+                    "cost_product"
+                ]
+            ],
+            "text": "E oi còn Set 01 trưa hôm qua 189"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    7,
+                    "name_product"
+                ],
+                [
+                    13,
+                    14,
+                    "size_product"
+                ]
+            ],
+            "text": "Quần 16 size L còn ko em"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    12,
+                    "name_product"
+                ],
+                [
+                    13,
+                    17,
+                    "cost_product"
+                ]
+            ],
+            "text": "Dam hoa hong 149k con ko shop"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    6,
+                    "name_product"
+                ],
+                [
+                    11,
+                    13,
+                    "color_product"
+                ]
+            ],
+            "text": "Áo hoa màu đỏ con ko shop"
+        },
+        {
+            "request_slots": [
+                "amount_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    6,
+                    "name_product"
+                ],
+                [
+                    11,
+                    15,
+                    "material_product"
+                ]
+            ],
+            "text": "Áo hoa vải thun con ko shop"
+        }
+    ],
+    "Done": [
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok b"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok shop ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Da tk shop"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok cảm ơn e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "E cảm ơn ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok cưng"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok cảm ơn e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok cảm ơn e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Ok cam on e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Cam on e"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Thanks bạn"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Tk em nha"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Cảm ơn em"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Oh chị cảm ơn e nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "Thanks"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "ok, cám ơn"
+        }
+    ]
+}

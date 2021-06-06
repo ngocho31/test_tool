@@ -1,0 +1,354 @@
+[
+    {
+        "name_product": "áo tay lỡ",
+        "size_product": "S",
+        "color_product": "xanh",
+        "cost_product": "309",
+        "material_product": "cotton",
+        "amount_product": 22
+    },
+    {
+        "name_product": "áo tay lỡ",
+        "size_product": "S",
+        "color_product": "đỏ",
+        "cost_product": "309",
+        "material_product": "cotton",
+        "amount_product": 25
+    },
+    {
+        "name_product": "áo tay lỡ",
+        "size_product": "M",
+        "color_product": "xanh",
+        "cost_product": "309",
+        "material_product": "cotton",
+        "amount_product": 45
+    },
+    {
+        "name_product": "áo tay lỡ",
+        "size_product": "M",
+        "color_product": "đỏ",
+        "cost_product": "309",
+        "material_product": "cotton",
+        "amount_product": 45
+    },
+    {
+        "name_product": "áo tay lỡ",
+        "size_product": "L",
+        "color_product": "xanh",
+        "cost_product": "309",
+        "material_product": "cotton",
+        "amount_product": 84
+    },
+    {
+        "name_product": "áo tay lỡ",
+        "size_product": "L",
+        "color_product": "đỏ",
+        "cost_product": "309",
+        "material_product": "cotton",
+        "amount_product": 18
+    },
+    {
+        "name_product": "áo tay dài",
+        "size_product": "M",
+        "color_product": "xanh",
+        "cost_product": "69",
+        "material_product": "sơ mi",
+        "amount_product": 26
+    },
+    {
+        "name_product": "áo tay dài",
+        "size_product": "M",
+        "color_product": "đỏ",
+        "cost_product": "69",
+        "material_product": "sơ mi",
+        "amount_product": 34
+    },
+    {
+        "name_product": "áo tay dài",
+        "size_product": "M",
+        "color_product": "vàng",
+        "cost_product": "69",
+        "material_product": "sơ mi",
+        "amount_product": 74
+    },
+    {
+        "name_product": "áo tay dài",
+        "size_product": "L",
+        "color_product": "xanh",
+        "cost_product": "69",
+        "material_product": "sơ mi",
+        "amount_product": 49
+    },
+    {
+        "name_product": "áo tay dài",
+        "size_product": "L",
+        "color_product": "đỏ",
+        "cost_product": "69",
+        "material_product": "sơ mi",
+        "amount_product": 22
+    },
+    {
+        "name_product": "áo tay dài",
+        "size_product": "L",
+        "color_product": "vàng",
+        "cost_product": "69",
+        "material_product": "sơ mi",
+        "amount_product": 53
+    },
+    {
+        "name_product": "áo ba lỗ",
+        "size_product": "free size",
+        "color_product": "đỏ",
+        "cost_product": "459",
+        "material_product": "cotton",
+        "amount_product": 42
+    },
+    {
+        "name_product": "áo form rộng",
+        "size_product": "free size",
+        "color_product": "đỏ",
+        "cost_product": "109",
+        "material_product": "vải thun",
+        "amount_product": 8
+    },
+    {
+        "name_product": "áo form rộng",
+        "size_product": "free size",
+        "color_product": "vàng",
+        "cost_product": "109",
+        "material_product": "vải thun",
+        "amount_product": 63
+    },
+    {
+        "name_product": "quần baggy",
+        "size_product": "free size",
+        "color_product": "xanh",
+        "cost_product": "469",
+        "material_product": "vải thun",
+        "amount_product": 90
+    },
+    {
+        "name_product": "quần baggy",
+        "size_product": "free size",
+        "color_product": "đỏ",
+        "cost_product": "469",
+        "material_product": "vải thun",
+        "amount_product": 15
+    },
+    {
+        "name_product": "quần baggy",
+        "size_product": "free size",
+        "color_product": "vàng",
+        "cost_product": "469",
+        "material_product": "vải thun",
+        "amount_product": 98
+    },
+    {
+        "name_product": "quần đùi ôm",
+        "size_product": "S",
+        "color_product": "xanh",
+        "cost_product": "119",
+        "material_product": "jean",
+        "amount_product": 50
+    },
+    {
+        "name_product": "quần đùi ôm",
+        "size_product": "M",
+        "color_product": "xanh",
+        "cost_product": "119",
+        "material_product": "jean",
+        "amount_product": 62
+    },
+    {
+        "name_product": "quần đùi ôm",
+        "size_product": "L",
+        "color_product": "xanh",
+        "cost_product": "119",
+        "material_product": "jean",
+        "amount_product": 68
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "S",
+        "color_product": "xanh",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 4
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "S",
+        "color_product": "đen",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 49
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "S",
+        "color_product": "xanh đen",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 22
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "M",
+        "color_product": "xanh",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 16
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "M",
+        "color_product": "đen",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 3
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "M",
+        "color_product": "xanh đen",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 74
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "L",
+        "color_product": "xanh",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 90
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "L",
+        "color_product": "đen",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 77
+    },
+    {
+        "name_product": "quần đùi in hoa",
+        "size_product": "L",
+        "color_product": "xanh đen",
+        "cost_product": "159",
+        "material_product": "jean",
+        "amount_product": 74
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "S",
+        "color_product": "xanh",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 100
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "S",
+        "color_product": "đỏ",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 20
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "S",
+        "color_product": "vàng",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 89
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "M",
+        "color_product": "xanh",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 32
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "M",
+        "color_product": "đỏ",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 7
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "M",
+        "color_product": "vàng",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 100
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "L",
+        "color_product": "xanh",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 58
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "L",
+        "color_product": "đỏ",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 20
+    },
+    {
+        "name_product": "quần suông trơn",
+        "size_product": "L",
+        "color_product": "vàng",
+        "cost_product": "49",
+        "material_product": "kaki",
+        "amount_product": 62
+    },
+    {
+        "name_product": "chân váy chữ A",
+        "size_product": "M",
+        "color_product": "đen",
+        "cost_product": "159",
+        "material_product": "kaki",
+        "amount_product": 9
+    },
+    {
+        "name_product": "chân váy chữ A",
+        "size_product": "M",
+        "color_product": "trắng",
+        "cost_product": "159",
+        "material_product": "kaki",
+        "amount_product": 29
+    },
+    {
+        "name_product": "chân váy chữ A",
+        "size_product": "L",
+        "color_product": "đen",
+        "cost_product": "159",
+        "material_product": "kaki",
+        "amount_product": 63
+    },
+    {
+        "name_product": "chân váy xẻ tà",
+        "size_product": "M",
+        "color_product": "đen",
+        "cost_product": "309",
+        "material_product": "lụa",
+        "amount_product": 85
+    },
+    {
+        "name_product": "chân váy xẻ tà",
+        "size_product": "L",
+        "color_product": "đen",
+        "cost_product": "309",
+        "material_product": "lụa",
+        "amount_product": 59
+    }
+]

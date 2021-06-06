@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test tool</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="/eel.js"></script> 
+</head>
+<body>
+    <div class="topnav">
+        <!-- <a class="active" id="button-name">Display name</a>
+        <a id="button-number">Display a random number</a>
+        <a id="button-date">Display time and date</a> -->
+        <a>User Action</a>
+    </div>
+    <br>
+
+    <label for="nl">NL (default input):</label>
+    <input type="text" id="nl" name="nl">
+    <br><br>
+
+    <label for="intents">Intent:</label>
+    <select id="intents">
+        
+    </select>
+    <br><br>
+
+    <label for="inform_slots">Inform slots:</label>
+    <button type="button" id="button-new_inform_slot">New inform slot</button>
+    <form id="inform_slots">
+        <!-- <label for="inform_entity1">Entity:</label>
+        <select id="inform_entity1">
+            
+        </select>
+
+        <label for="inform_value1">Value:</label>
+        <input type="text" id="inform_value1" name="inform_value1"> -->
+
+        <!-- <br> -->
+    </form>
+    <br>
+
+    <label for="request_slots">Request slots:</label>
+    <button type="button" id="button-new_request_slot">New request slot</button>
+    <form id="request_slots">
+        <!-- <label for="request_entity1">Entity:</label>
+        <select id="request_entity1">
+            
+        </select> -->
+
+        <!-- <br> -->
+    </form>
+    <br>
+
+    <form>
+        <button type="button" id="button-send">Send</button>
+        <button type="button" id="button-clear">Clear</button>
+        <button type="button" id="button-end">End</button>
+    </form>
+
+    <br><br>
+    <div class="topnav">
+        <a>Conversation</a>
+    </div>
+    <br>
+    <div style="border:2px solid #000;padding: 5px;" id="dialog"></div>
+
+</body>
+<script src="js/main.js"></script>
+</html>
