@@ -1,11 +1,12 @@
 import copy
 import time
 import numpy as np
+import random
 
 from utils import DEBUG_PRINT, SAVE_LOG
 from utils import convert_list_to_dict
 from db_query import DBQuery
-from dialogue_config import all_intents, all_slots
+from dialogue_config import all_intents, all_slots, usersim_default_key
 from dialogue_config import request_product_entity
 
 class StateTracker:
@@ -25,6 +26,7 @@ class StateTracker:
         """
 
         self.db_helper = DBQuery(database)
+        self.match_key = usersim_default_key
         self.intents_dict = convert_list_to_dict(all_intents)
         self.num_intents = len(all_intents)
         self.slots_dict = convert_list_to_dict(all_slots)
@@ -37,7 +39,7 @@ class StateTracker:
         """Resets current_informs, history and round_num."""
 
         self.current_informs = {}
-        self.current_requests = []
+        # self.current_requests = []
         # A list of the dialogues (dicts) by the agent and user so far in the conversation
         self.history = []
         self.round_num = 0
@@ -45,7 +47,8 @@ class StateTracker:
     def get_state_size(self):
         """Returns the state size of the state representation used by the agent."""
 
-        state_size = 2 * self.num_intents + 8 * self.num_slots + self.max_round_num + 3
+        # state_size = 2 * self.num_intents + 8 * self.num_slots + self.max_round_num + 3
+        state_size = 2 * self.num_intents + 7 * self.num_slots + self.max_round_num + 3
         # DEBUG_PRINT("state_size = ", state_size)
         return state_size
 
@@ -71,11 +74,13 @@ class StateTracker:
         # DEBUG_PRINT("len history = ", len(self.history))
         # Get last user action
         user_action = self.history[-1]
+        # DEBUG_PRINT(user_action)
         # Check with all slots are informed by user, finding a product in database is exist
-        db_results_dict = self.db_helper.get_db_results_for_slots(self.current_informs, self.current_requests, request_product_entity)
+        db_results_dict = self.db_helper.get_db_results_for_slots(self.current_informs)
         # DEBUG_PRINT("db_results_dict = ", db_results_dict)
 
         last_agent_action = self.history[-2] if len(self.history) > 1 else None
+        # DEBUG_PRINT(last_agent_action)
 
         # Create one-hot of intents to represent the current user action
         user_act_rep = np.zeros((self.num_intents,))
@@ -90,6 +95,11 @@ class StateTracker:
         user_request_slots_rep = np.zeros((self.num_slots,))
         for key in user_action['request_slots'].keys():
             user_request_slots_rep[self.slots_dict[key]] = 1.0
+
+        # Create bag of filled_in slots based on the current_informs
+        current_informs_slots_rep = np.zeros((self.num_slots,))
+        for key in self.current_informs:
+            current_informs_slots_rep[self.slots_dict[key]] = 1.0
 
         # Create one-hot of intents to represent the last agent action
         agent_act_rep = np.zeros((self.num_intents,))
@@ -108,15 +118,10 @@ class StateTracker:
             for key in last_agent_action['request_slots'].keys():
                 agent_request_slots_rep[self.slots_dict[key]] = 1.0
 
-        # Create bag of filled_in slots based on the current_informs
-        current_informs_slots_rep = np.zeros((self.num_slots,))
-        for key in self.current_informs:
-            current_informs_slots_rep[self.slots_dict[key]] = 1.0
-
         # Create bag of filled_in slots based on the current_requests
-        current_requests_slots_rep = np.zeros((self.num_slots,))
-        for key in self.current_requests:
-            current_requests_slots_rep[self.slots_dict[key]] = 1.0
+        # current_requests_slots_rep = np.zeros((self.num_slots,))
+        # for key in self.current_requests:
+        #     current_requests_slots_rep[self.slots_dict[key]] = 1.0
 
         # Value representation of the round num
         turn_rep = np.zeros((1,)) + self.round_num / 5.
@@ -140,19 +145,19 @@ class StateTracker:
         # DEBUG_PRINT(kb_binary_rep)
 
         state_representation = np.hstack(
-            [user_act_rep, user_inform_slots_rep, user_request_slots_rep, # 3/6/6
-            agent_act_rep, agent_inform_slots_rep, agent_request_slots_rep, # 3/6/6
-            current_informs_slots_rep, current_requests_slots_rep, # 6/6
+            [user_act_rep, user_inform_slots_rep, user_request_slots_rep, # 6/7/7
+            agent_act_rep, agent_inform_slots_rep, agent_request_slots_rep, # 6/7/7
+            current_informs_slots_rep, # 7
+            # current_requests_slots_rep, # 6/6
+            # current_informs_slots_rep, # 6/6
             turn_rep, turn_onehot_rep, # 1/20
-            kb_count_rep, kb_binary_rep # 7/7
+            kb_binary_rep, kb_count_rep # 7/7
             ]).flatten()
         # DEBUG_PRINT("-----state-----")
         # DEBUG_PRINT(state_representation)
         # DEBUG_PRINT("size state_representation = ", len(state_representation))
         return state_representation
 
-
-    """Warmup phase."""
     def update_state_user(self, user_action):
         """
         Updates the dialogue history with the user's action and augments the user's action.
@@ -171,13 +176,15 @@ class StateTracker:
             self.current_informs[key] = value
         # Keep track all key are requested by user to force agent answer.
         # Need to delete if agent informed.
-        for key, value in user_action['request_slots'].items():
-            self.current_requests.append(key)
+        # for key, value in user_action['request_slots'].items():
+        #     self.current_requests.append(key)
         user_action.update({'round': self.round_num, 'speaker': 'User'})
         self.history.append(user_action)
         self.round_num += 1
 
-    def update_state_agent(self, agent_action):
+
+    """Warmup phase."""
+    def update_state_agent_warmup(self, agent_action, use_rule=False):
         """
         Updates the dialogue history with the agent's action and augments the agent's action.
 
@@ -188,14 +195,18 @@ class StateTracker:
             agent_action (dict): The agent action of format dict('intent': string, 'inform_slots': dict,
                                  'request_slots': dict) and changed to dict('intent': '', 'inform_slots': {},
                                  'request_slots': {}, 'round': int, 'speaker': 'Agent')
+
         """
 
-        # delete request keys when agent informed
-        for slot in agent_action['inform_slots']:
-            if self.current_requests.__contains__(slot):
-                self.current_requests.remove(slot)
-        agent_action.update({'round': self.round_num, 'speaker': 'Agent'})
-        self.history.append(agent_action)
+        if use_rule:
+            self.update_state_agent_train(agent_action)
+        else:
+            # delete request keys when agent informed
+            for slot in agent_action['inform_slots']:
+                if self.current_requests.__contains__(slot):
+                    self.current_requests.remove(slot)
+            agent_action.update({'round': self.round_num, 'speaker': 'Agent'})
+            self.history.append(agent_action)
 
 
     """Training phase."""
@@ -214,7 +225,6 @@ class StateTracker:
         """
 
         # DEBUG_PRINT(agent_action)
-        # If intent is match_found then fill the action informs with the matched informs (if there is a match)
         if agent_action['intent'] == 'inform':
             assert agent_action['inform_slots']
             # Check with all slots are informed by user, finding a product in database is exist
@@ -224,28 +234,35 @@ class StateTracker:
             key, value = list(agent_action['inform_slots'].items())[0]  # Only one
             assert key != 'match_found'
             assert value != 'PLACEHOLDER', 'KEY: {}'.format(key)
-            # inform slot which user request, inform all of the possible value
-            # for slot in self.current_requests:
-            #     if db:
-            #         value = []
-            #         if slot == "amount_product":
-            #             value = 1
-            #         else:
-            #             for item in db:
-            #                 if not value.__contains__(item[slot]):
-            #                     value.append(item[slot])
-            #         agent_action['inform_slots'].update({slot: value})
+            # if key == 'amount_product':
+            #     if value == 'no match available':
+            #         value = 0
             #     else:
-            #         print("[get_agent_action] db null")
-            # delete request keys when agent informed
-            for slot in agent_action['inform_slots']:
-                if self.current_requests.__contains__(slot):
-                    self.current_requests.remove(slot)
+            #         value = 1
+            #         agent_action['inform_slots'][key] = value
+            if type(value) != list and value != 'no match available':
+                self.current_informs[key] = value
+            # for slot in agent_action['inform_slots']:
+            #     if self.current_requests.__contains__(slot):
+            #         self.current_requests.remove(slot)
         # If intent is match_found then fill the action informs with the matched informs (if there is a match)
-        # elif agent_action['intent'] == 'not_found':
-        #     agent_action['inform_slots'][self.match_key] = 'no match available'
-        #     self.current_informs[self.match_key] = agent_action['inform_slots'][self.match_key]
-        SAVE_LOG("agent:\t", agent_action, filename='train.log')
+        elif agent_action['intent'] == 'match_found':
+            assert not agent_action['inform_slots'], 'Cannot inform and have intent of match found!'
+            db_results = self.db_helper.get_db_results(self.current_informs)
+            if db_results:
+                # Arbitrarily pick the first value of the dict
+                # dict_items = db_results[0]
+                dict_items = random.choice(db_results)
+                agent_action['inform_slots'] = copy.deepcopy(dict_items)
+                # if 'amount_product' not in list(self.current_informs.keys()):
+                #     agent_action['inform_slots'].pop('amount_product')
+                # else:
+                #     agent_action['inform_slots'].update({'amount_product': self.current_informs['amount_product']})
+                agent_action['inform_slots'][self.match_key] = str(agent_action['inform_slots'])
+            else:
+                agent_action['inform_slots'][self.match_key] = 'no match available'
+            self.current_informs[self.match_key] = agent_action['inform_slots'][self.match_key]
+        # DEBUG_PRINT("agent:\t", agent_action)
         agent_action.update({'round': self.round_num, 'speaker': 'Agent'})
         self.history.append(agent_action)
 

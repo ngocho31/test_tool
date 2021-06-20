@@ -1,5 +1,6 @@
 import json
 import random
+import copy
 
 from utils import DEBUG_PRINT, SAVE_LOG
 
@@ -51,8 +52,10 @@ class ConvertTool:
             self.nl_db = json.load(f, encoding='utf-8')
 
     # convert semantic frame to natural language
-    def NLG(self, action, NL_db):
+    def NLG(self, action_send, NL_db):
+        action = copy.deepcopy(action_send)
         sentence_list = []
+        val_islist = False
         if action['speaker'] == 'User':
             # # user action does not have inform/request slots
             # if user_intent_list_none_slot.__contains__(action['intent']):
@@ -99,6 +102,7 @@ class ConvertTool:
                                     cm = action['inform_slots'][slot] - 100
                                     val_str = str(m) + 'm' + str(cm)
                                 elif isinstance(action['inform_slots'][slot], list):
+                                    val_islist = True
                                     val_str = ''
                                     for i, val in enumerate(action['inform_slots'][slot]):
                                         if i == len(action['inform_slots'][slot])-1 and i > 0:
@@ -106,6 +110,8 @@ class ConvertTool:
                                         else:
                                             val_str += str(val) + ', '
                                 else:
+                                    if action['inform_slots'][slot] == 'anything':
+                                        action['inform_slots'][slot] = 'gì cũng được'
                                     val_str = str(action['inform_slots'][slot])
                                 pos1 = pos[0]-1 if pos[0] != 0 else pos[0]
                                 rep_dict.update({s[pos1:(pos[1])]: ' ' + val_str + ' '})
@@ -122,8 +128,15 @@ class ConvertTool:
             # agent action have inform/request slots
             if agent_intent_list.__contains__(action['intent']):
                 # find a sentence in NL list have the same slots with agent action
-                # if 'no match available' in action['inform_slots'].values():
-                #     action['intent'] = 'not_found'
+                if 'no match available' in list(action['inform_slots'].values()):
+                    action['intent'] = 'not_found'
+                    for key, val in action['inform_slots'].items():
+                        action['request_slots'].update({key: 'UNK'})
+                    action['inform_slots'].clear()
+                if action['intent'] == 'match_found':
+                    action['inform_slots'].pop('material_product', None)
+                    action['inform_slots'].pop('amount_product', None)
+                    action['inform_slots'].pop('shopping', None)
                 for sentence in NL_db[agent_intent_list[action['intent']]]:
                     match = True
                     NL_list = []
@@ -160,6 +173,7 @@ class ConvertTool:
                                         val_str = 'ko còn'
                                 else:
                                     if isinstance(action['inform_slots'][slot], list):
+                                        val_islist = True
                                         val_str = ''
                                         for i, val in enumerate(action['inform_slots'][slot]):
                                             if i == len(action['inform_slots'][slot])-1 and i > 0:
@@ -174,12 +188,17 @@ class ConvertTool:
                     for i, j in rep_dict.items():
                         s = s.replace(i, j)
                     # DEBUG_PRINT(s)
+                    if val_islist:
+                        if list(action['inform_slots'].keys())[0] == 'size_product':
+                            s = s + ". Bạn mặc size gì ạ?"
+                        elif list(action['inform_slots'].keys())[0] == 'color_product':
+                            s = s + ". Bạn lấy màu gì ạ?"
                     return s
 
-        DEBUG_PRINT(action)
+        # DEBUG_PRINT(action)
         # save the actions without the corresponding natural language
         # action_save.append(action)
-        return ''
+        return action
 
     # convert action to NL
     def convert_to_nl(self, action):

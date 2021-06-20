@@ -18,7 +18,20 @@
     <br>
 
     <label for="nl">NL (default input):</label>
-    <input type="text" id="nl" name="nl">
+    <input type="text" id="nl" name="nl" onkeypress="return searchKeyPress(event);">
+    <script>
+    function searchKeyPress(e)
+    {
+        // look for window.event in case event isn't passed in
+        e = e || window.event;
+        if (e.keyCode == 13)
+        {
+            document.getElementById('button-send').click();
+            return false;
+        }
+        return true;
+    }
+    </script>
     <br><br>
 
     <label for="intents">Intent:</label>

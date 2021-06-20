@@ -1,25 +1,18 @@
 {
   "db_file_paths": {
-    "database": "data/product_db.json",
-    "dict": "data/product_dict.json",
-    "user_goals": "data/user_goals.json",
-    "dialogs": "data/dialogs.json"
+    "database": "data/product_db.json"
   },
   "run": {
-    "usersim": true,
-    "num_ep_warmup": 20000,
-    "num_ep_run": 20000,
-    "train_freq": 100,
-    "max_round_num": 20,
-    "success_rate_threshold": 0.0
+    "max_round_num": 20
   },
   "agent": {
-    "save_weights_file_path": "weights/model.h5",
-    "load_weights_file_path": "weights/model.h5",
+    "save_weights_file_path": "weights/model1.h5",
+    "load_weights_file_path": "weights/model1.h5",
     "vanilla": true,
-    "learning_rate": 5e-4,
-    "batch_size": 20,
-    "dqn_hidden_size": 40,
+    "learning_rate": 1e-3,
+    "batch_size": 16,
+    "dqn_hidden_size": 80,
+    "epsilon_init": 0.0,
     "gamma": 0.9,
     "max_mem_size": 500000
   }

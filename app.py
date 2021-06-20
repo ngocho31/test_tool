@@ -3,7 +3,8 @@ import json
 import requests
 
 from utils import DEBUG_PRINT, SAVE_LOG
-from dialogue_config import all_intents, all_slots
+from dialogue_config import usersim_intents, usersim_inform_slots
+from dialogue_config import intent_list, entity_list
 from dqn_agent import DQNAgent
 from state_tracker import StateTracker
 from convert_to_NL import ConvertTool
@@ -31,29 +32,82 @@ def episode_reset():
     dqn_agent.reset()
 
 def post_user_response(user_action):
+    done = False
+    if type(user_action) == str:
+        msg["message"] = user_action
+        # msg["message"] = 'Set xanh size S con khong'
+        # proxies = {'https': 'http://127.0.0.1:8888'}
+        DEBUG_PRINT("send mess: ", user_action)
+        x = requests.post(url, json=msg)
+        DEBUG_PRINT("user action: ", x.json())
+
+        # Update dialog
+        user_nl = 'User: ' + user_action
+        eel.update_dialog(user_nl)
+
+        # Convert user NL to user action
+        user_action = pre_processing_action(x.json())
+
+        if user_action['intent'] == 'order':
+            user_action['intent'] = 'inform'
+        if user_action['intent'] in usersim_intents:
+            # Update state tracker with user action
+            state_tracker.update_state_user(user_action)
+    else:
+        # Update state tracker with user action
+        state_tracker.update_state_user(user_action)
+        DEBUG_PRINT("user action: ", user_action)
+
+        # Convert user action to user NL
+        user_nl = convert_tool.convert_to_nl(user_action)
+
+        # Update dialog
+        user_nl = 'User: ' + user_nl
+        eel.update_dialog(user_nl)
+    SAVE_LOG(user_action, filename='test.log')
+
     # TODO: check done intent to end conversation
 
-    # Update state tracker with user action
-    state_tracker.update_state_user(user_action)
-    DEBUG_PRINT(user_action)
+    # Check user intent in based-rule policy:
+    if user_action['intent'] in usersim_intents:
+        # Grab "next state" as state
+        state = state_tracker.get_state(done)
 
-    user_nl = convert_tool.convert_to_nl(user_action)
-    user_nl = 'User: ' + user_nl
-    eel.update_dialog(user_nl)
+        # Agent takes action given state tracker's representation of dialogue
+        agent_action_index, agent_action = dqn_agent.get_action_train(state)
+    elif user_action['intent'] == 'hello':
+        agent_action = {}
+        agent_action['intent'] = 'hello'
+        agent_action['inform_slots'] = {}
+        agent_action['request_slots'] = {}
+    else:
+        agent_action = {}
+        agent_action['intent'] = 'reject'
+        agent_action['inform_slots'] = {}
+        agent_action['request_slots'] = {}
 
-    done = False
-    # Grab "next state" as state
-    state = state_tracker.get_state(done)
-
-    # Agent takes action given state tracker's representation of dialogue
-    agent_action_index, agent_action = dqn_agent.get_action_train(state)
     # Update state tracker with the agent's action
     state_tracker.update_state_agent_test(agent_action)
-    DEBUG_PRINT(agent_action)
+    DEBUG_PRINT("agent action: ", agent_action)
+    SAVE_LOG(agent_action, filename='test.log')
 
     agent_nl = convert_tool.convert_to_nl(agent_action)
     agent_nl = 'Agent: ' + agent_nl
     eel.update_dialog(agent_nl)
+
+def pre_processing_action(dict):
+    user_action = {}
+    user_action["inform_slots"] = {}
+    user_action["request_slots"] = {}
+    user_action["intent"] = intent_list[dict["intent"]]
+    for slot in dict["entity"]:
+        user_action["inform_slots"][entity_list[slot[0]]] = slot[1]
+    if type(dict["request_slots"]) == list:
+        for slot in dict["request_slots"]:
+            user_action["request_slots"][entity_list[slot[0]]] = 'UNK'
+    elif dict["request_slots"]:
+        user_action["request_slots"][entity_list[dict["request_slots"]]] = 'UNK'
+    return user_action
 
 def close_callback(route, websockets):
     if not websockets:
@@ -62,23 +116,15 @@ def close_callback(route, websockets):
 
 @eel.expose
 def new_inform_slot():
-    eel.new_inform_slot(all_slots)
+    eel.new_inform_slot(usersim_inform_slots)
 
 @eel.expose
 def new_request_slot():
-    eel.new_request_slot(all_slots)
+    eel.new_request_slot(usersim_inform_slots)
 
 @eel.expose
 def send():
     user_action = eel.send()()
-    if type(user_action) == str:
-        msg["message"] = user_action
-        # msg["message"] = 'Set xanh size S con khong'
-        # proxies = {'https': 'http://127.0.0.1:8888'}
-        x = requests.post(url, json=msg)
-        print(x.json())
-        user_action = pre_processing_action(x.json())
-
     post_user_response(user_action)
 
 @eel.expose
@@ -106,6 +152,8 @@ if __name__ == "__main__":
     file_path_dict = constants['db_file_paths']
     DATABASE_FILE_PATH = file_path_dict['database']
 
+    max_round_num = constants['run']['max_round_num']
+
     # Method to model regconize user intent
     url = 'http://103.113.83.31:400/get_entity_intent'
     msg = {'message': 'somevalue'}
@@ -118,7 +166,7 @@ if __name__ == "__main__":
     convert_tool = ConvertTool()
 
     eel.init('web')
-    eel.get_dialog_config(all_intents)
+    eel.get_dialog_config(usersim_intents)
     episode_reset()
 
     eel.start('index.html', mode='chrome',

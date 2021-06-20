@@ -6,7 +6,7 @@ import numpy as np
 import re
 
 from utils import DEBUG_PRINT, SAVE_LOG
-from dialogue_config import agent_actions
+from dialogue_config import rule_requests, agent_actions
 
 # Some of the code based off of https://jaromiru.com/2016/09/27/lets-make-a-dqn-theory/
 # Note: In original paper's code the epsilon is not annealed and annealing is not implemented in this code either
@@ -34,15 +34,21 @@ class DQNAgent:
         self.memory = []
         self.memory_index = 0
 
+        self.eps = constants['agent']['epsilon_init']
         self.lr = constants['agent']['learning_rate']
         self.gamma = constants['agent']['gamma']
         self.batch_size = constants['agent']['batch_size']
         self.hidden_size = constants['agent']['dqn_hidden_size']
         self.vanilla = constants['agent']['vanilla']
 
+        if self.max_memory_size < self.batch_size:
+            raise ValueError('Max memory size must be at least as great as batch size!')
+
         self.state_size = state_size
         self.possible_actions = agent_actions
         self.num_actions = len(self.possible_actions)
+
+        self.rule_request_set = rule_requests
 
         self.beh_model = self._build_model()
         self.tar_model = self._build_model()
@@ -55,7 +61,10 @@ class DQNAgent:
         self.reset()
 
     def reset(self):
-        """Resets ..."""
+        """Resets the rule-based variables."""
+
+        self.rule_current_slot_index = 0
+        self.rule_phase = 'not done'
 
     def is_memory_full(self):
         """Returns true if the memory is full."""
@@ -84,6 +93,39 @@ class DQNAgent:
             self.memory.append(None)
         self.memory[self.memory_index] = (state, action, reward, next_state, done)
         self.memory_index = (self.memory_index + 1) % self.max_memory_size
+
+    def _map_index_to_action(self, index):
+        """
+        Maps an index to an action in possible actions.
+
+        Parameters:
+            index (int)
+
+        Returns:
+            dict
+        """
+
+        for (i, action) in enumerate(self.possible_actions):
+            if index == i:
+                return copy.deepcopy(action)
+        raise ValueError('Index: {} not in range of possible actions'.format(index))
+
+    def _map_action_to_index(self, response):
+        """
+        Maps an action to an index from possible actions.
+
+        Parameters:
+            response (dict)
+
+        Returns:
+            int
+        """
+
+        for (i, action) in enumerate(self.possible_actions):
+            if response == action:
+                return i
+        raise ValueError('Response: {} not found in possible actions'.format(response))
+
 
     """RL Model."""
     def _build_model(self):
@@ -152,11 +194,24 @@ class DQNAgent:
                 t = beh_state_preds[i]
                 predict = beh_state_preds[i]
                 q = beh_state_preds[i][a]
+                SAVE_LOG("next state = ", \
+                "\nuser intent: ", s_[:6], "\ninform: ", s_[6:13], "\nrequest: ", s_[13:20], \
+                "\nagent intent: ", s_[20:26], "\ninform: ", s_[26:33], "\nrequest: ", s_[33:40], \
+                "\ncurrent inform: ", s_[40:47], \
+                "\nresult db: ", s_[68:76])
+                SAVE_LOG("Output predict = ", predict)
                 if not self.vanilla:
+                    SAVE_LOG("Get action have Q max next state = ", beh_next_states_preds[i])
+                    SAVE_LOG("Output predict next state = ", tar_next_state_preds[i])
                     t[a] = r + self.gamma * tar_next_state_preds[i][np.argmax(beh_next_states_preds[i])] * (not d)
                 else:
                     t[a] = r + self.gamma * np.amax(tar_next_state_preds[i]) * (not d)
-                SAVE_LOG("input state = ", s)
+                # SAVE_LOG("input state: ", s)
+                SAVE_LOG("input state: ", \
+                "\nuser intent: ", s[:6], "\ninform: ", s[6:13], "\nrequest: ", s[13:20], \
+                "\nagent intent: ", s[20:26], "\ninform: ", s[26:33], "\nrequest: ", s[33:40], \
+                "\ncurrent inform: ", s[40:47], \
+                "\nresult db: ", s[68:76])
                 SAVE_LOG("Output predict = ", predict)
                 # SAVE_LOG("Q* = ", t[a])
                 loss = t[a] - q
@@ -189,6 +244,56 @@ class DQNAgent:
 
 
     """Warmup phase."""
+    def get_action_warmup(self, state):
+        """
+        Returns the action of the agent given a state.
+
+        Gets the action of the agent given the current state. 
+        In warmup phase using the rule-based policy to respond.
+
+        Parameters:
+            state (numpy.array): The database with format dict(long: dict)
+
+        Returns:
+            int: The index of the action in the possible actions
+            dict: The action/response itself
+
+        """
+
+        if self.eps > random.random():
+            index = random.randint(0, self.num_actions - 1)
+            action = self._map_index_to_action(index)
+            return index, action
+        else:
+            return self._rule_action()
+
+    def _rule_action(self):
+        """
+        Returns a rule-based policy action.
+
+        Selects the next action of a simple rule-based policy.
+
+        Returns:
+            int: The index of the action in the possible actions
+            dict: The action/response itself
+
+        """
+
+        if self.rule_current_slot_index < len(self.rule_request_set):
+            slot = self.rule_request_set[self.rule_current_slot_index]
+            self.rule_current_slot_index += 1
+            rule_response = {'intent': 'request', 'inform_slots': {}, 'request_slots': {slot: 'UNK'}}
+        elif self.rule_phase == 'not done':
+            rule_response = {'intent': 'match_found', 'inform_slots': {}, 'request_slots': {}}
+            self.rule_phase = 'done'
+        elif self.rule_phase == 'done':
+            rule_response = {'intent': 'done', 'inform_slots': {}, 'request_slots': {}}
+        else:
+            raise Exception('Should not have reached this clause')
+
+        index = self._map_action_to_index(rule_response)
+        return index, rule_response
+
     def pick_action(self, action):
         """
         Return the action of the agent by using action in defined dialog.
@@ -223,22 +328,6 @@ class DQNAgent:
         index = self._map_action_to_index(rule_response)
         return index, agent_response
 
-    def _map_action_to_index(self, response):
-        """
-        Maps an action to an index from possible actions.
-
-        Parameters:
-            response (dict)
-
-        Returns:
-            int
-        """
-
-        for (i, action) in enumerate(self.possible_actions):
-            if response == action:
-                return i
-        raise ValueError('Response: {} not found in possible actions'.format(response))
-
 
     """Training phase."""
     def copy(self):
@@ -264,7 +353,12 @@ class DQNAgent:
             state: current state of dialog
         """
 
-        return self._dqn_action(state)
+        if self.eps > random.random():
+            index = random.randint(0, self.num_actions - 1)
+            action = self._map_index_to_action(index)
+            return index, action
+        else:
+            return self._dqn_action(state)
 
     def _dqn_action(self, state):
         """
@@ -280,25 +374,11 @@ class DQNAgent:
 
         prop = self._dqn_predict_one(state)
         # DEBUG_PRINT("prop action = ", prop)
+        # SAVE_LOG("state = ", state, filename='test.log')
+        # SAVE_LOG("prop action = ", prop, filename='test.log')
         index = np.argmax(self._dqn_predict_one(state))
         action = self._map_index_to_action(index)
         return index, action
-
-    def _map_index_to_action(self, index):
-        """
-        Maps an index to an action in possible actions.
-
-        Parameters:
-            index (int)
-
-        Returns:
-            dict
-        """
-
-        for (i, action) in enumerate(self.possible_actions):
-            if index == i:
-                return copy.deepcopy(action)
-        raise ValueError('Index: {} not in range of possible actions'.format(index))
 
     def _dqn_predict_one(self, state, target=False):
         """
