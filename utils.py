@@ -7,8 +7,9 @@ from dialogue_config import FAIL, SUCCESS
 WARMUPLOG = False
 TRAINLOG = False
 MODELLOG = False
-TESTLOG = True
+TESTLOG = False
 DEBUG = True
+DIALOG = True
 
 def DEBUG_PRINT(*arg):
     if DEBUG:
@@ -19,17 +20,18 @@ def DEBUG_PRINT(*arg):
             print("%s" % (message), end ="") # python3 syntax print
         print("")
 
-def SAVE_LOG(*arg, filename='model.log'):
+def SAVE_LOG(*arg, filename='test.log'):
     if (filename == 'warmup.log' and WARMUPLOG == False) or \
     (filename == 'train.log' and TRAINLOG == False) or \
     (filename == 'test.log' and TESTLOG == False) or \
+    (filename == 'dialog.log' and DIALOG == False) or \
     (filename == 'model.log' and MODELLOG == False):
         return
     string = ''
     for message in arg:
         string += str(message)
     string += '\n'
-    with open(filename,'a') as f:
+    with open('logs/' + filename,'a') as f:
         f.write(string)
 
 def reward_function(success, max_round):

@@ -64,7 +64,7 @@ def post_user_response(user_action):
         # Update dialog
         user_nl = 'User: ' + user_nl
         eel.update_dialog(user_nl)
-    SAVE_LOG(user_action, filename='test.log')
+    SAVE_LOG(user_action, filename='dialog.log')
 
     # TODO: check done intent to end conversation
 
@@ -89,7 +89,7 @@ def post_user_response(user_action):
     # Update state tracker with the agent's action
     state_tracker.update_state_agent_test(agent_action)
     DEBUG_PRINT("agent action: ", agent_action)
-    SAVE_LOG(agent_action, filename='test.log')
+    SAVE_LOG(agent_action, filename='dialog.log')
 
     agent_nl = convert_tool.convert_to_nl(agent_action)
     agent_nl = 'Agent: ' + agent_nl

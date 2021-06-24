@@ -247,12 +247,12 @@
             "request_slots": [],
             "inform_slots": [
                 [
-                    20,
-                    24,
+                    19,
+                    23,
                     "cost_product"
                 ]
             ],
-            "text": "dạ sản phẩm này giá 159k ạ"
+            "text": "dạ sản phẩm có giá 159k ạ"
         },
         {
             "request_slots": [],
@@ -324,12 +324,12 @@
             "request_slots": [],
             "inform_slots": [
                 [
-                    17,
-                    21,
+                    16,
+                    20,
                     "cost_product"
                 ]
             ],
-            "text": "sản phẩm này giá 875k c ạ"
+            "text": "sản phẩm có giá 875k c ạ"
         },
         {
             "request_slots": [],
@@ -346,12 +346,12 @@
             "request_slots": [],
             "inform_slots": [
                 [
-                    20,
-                    26,
+                    19,
+                    25,
                     "cost_product"
                 ]
             ],
-            "text": "sản phẩm này giá là 1.781k ạ"
+            "text": "sản phẩm có giá là 1.781k ạ"
         },
         {
             "request_slots": [],

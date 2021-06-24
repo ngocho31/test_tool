@@ -186,7 +186,6 @@ class DBQuery:
         assert len(inform_slot_to_fill) == 1
         key = list(inform_slot_to_fill.keys())[0]
         # DEBUG_PRINT("inform_slot_to_fill: ", inform_slot_to_fill)
-        # DEBUG_PRINT("current_inform_slots: ", current_inform_slots)
 
         # This removes the inform we want to fill from the current informs if it is present in the current informs
         # so it can be re-queried
@@ -199,7 +198,7 @@ class DBQuery:
 
         filled_inform = {}
         values_dict = self._count_slot_values(key, db_results)
-        # DEBUG_PRINT("values_dict: ", values_dict)
+        DEBUG_PRINT("values_dict: ", values_dict)
         if values_dict:
             # Get key with max value (ie slot value with highest count of available results)
             # filled_inform[key] = max(values_dict, key=values_dict.get)
@@ -207,7 +206,6 @@ class DBQuery:
                 filled_inform[key] = list(values_dict.keys())
             else:
                 filled_inform[key] = list(values_dict.keys())[0]
-            # DEBUG_PRINT("filled_inform: ", filled_inform[key])
         else:
             filled_inform[key] = 'no match available'
         # if not db_results:
@@ -237,7 +235,7 @@ class DBQuery:
         #                 value.append(item[key])
         #         filled_inform.update({key: value})
 
-        # DEBUG_PRINT("result: ", filled_inform)
+        DEBUG_PRINT("result: ", filled_inform)
         return filled_inform
 
     def get_db_results(self, constraints):
@@ -256,7 +254,7 @@ class DBQuery:
 
         # Filter non-queryable items and keys with the value 'anything' since those are inconsequential to the constraints
         new_constraints = {k: v for k, v in constraints.items() if k not in self.no_query and v != 'anything'}
-        # print(new_constraints)
+        
         if len(list(new_constraints.keys())) == 0:
             DEBUG_PRINT("constraints = ", constraints)
             # return []
@@ -292,9 +290,9 @@ class DBQuery:
             current_option_dict = data
             # First check if that database item actually contains the inform keys
             # Note: this assumes that if a constraint is not found in the db item then that item is not a match
-            # DEBUG_PRINT(set(new_constraints.keys()))
-            # DEBUG_PRINT(set(data.keys()))
-            # DEBUG_PRINT(len(set(new_constraints.keys()) - set(data.keys())))
+            DEBUG_PRINT(set(new_constraints.keys()))
+            DEBUG_PRINT(set(data.keys()))
+            DEBUG_PRINT(len(set(new_constraints.keys()) - set(data.keys())))
             if len(set(new_constraints.keys()) - set(data.keys())) == 0:
                 match = True
                 # Now check all the constraint values against the db values and if there is a mismatch don't store

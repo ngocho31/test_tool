@@ -1,0 +1,62 @@
+{
+    "name_product": [
+        "đầm nude cổ vest dáng dài",
+        "đầm sơ mi carô",
+        "set hồng vest váy ngắn",
+        "đầm nude lưới tay phồng",
+        "set dây kèm quần",
+        "set vest nơ viền",
+        "set vest kèm quần",
+        "set cổ xéo",
+        "đầm trắng 2 dây dáng xòe",
+        "đầm xanh caro cổ vest",
+        "set trắng cổ nơ",
+        "set áo trắng cổ chữ v kèm quần",
+        "đầm trắng dập ly tay phồng",
+        "đầm body đen lưới",
+        "set vest chủ tịch",
+        "đầm hoa",
+        "đầm xoắn eo",
+        "set sơ mi",
+        "set body vest",
+        "đầm body vest",
+        "đầm xòe nút",
+        "set đen kim tuyến",
+        "set xanh cỗ chữ v",
+        "đầm xòe cổ nâu",
+        "đầm nude ren"
+    ],
+    "size_product": [
+        "S",
+        "M",
+        "L"
+    ],
+    "color_product": [
+        "nude",
+        "carô xanh",
+        "hồng",
+        "xanh",
+        "đen viền",
+        "đen",
+        "None",
+        "cam",
+        "trắng",
+        "xám"
+    ],
+    "cost_product": [
+        "280",
+        "210",
+        "260",
+        "238",
+        "195",
+        "350",
+        "250"
+    ],
+    "material_product": [
+        "vải cao cấp, mặc mát"
+    ],
+    "amount_product": [
+        "2", "5", "hai", "9", "ba", "4", "3", "6", "1", "bốn",
+        "2 cái", "một", "7", " 2", "1 cái", "8"
+    ]
+}

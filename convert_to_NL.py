@@ -134,6 +134,8 @@ class ConvertTool:
                         action['request_slots'].update({key: 'UNK'})
                     action['inform_slots'].clear()
                 if action['intent'] == 'match_found':
+                    if action['inform_slots']['color_product'] == 'None':
+                        action['inform_slots'].pop('color_product', None)
                     action['inform_slots'].pop('material_product', None)
                     action['inform_slots'].pop('amount_product', None)
                     action['inform_slots'].pop('shopping', None)
@@ -193,6 +195,10 @@ class ConvertTool:
                             s = s + ". Bạn mặc size gì ạ?"
                         elif list(action['inform_slots'].keys())[0] == 'color_product':
                             s = s + ". Bạn lấy màu gì ạ?"
+                        elif list(action['inform_slots'].keys())[0] == 'cost_product':
+                            s = s + ". Bạn muốn tầm giá nào ạ?"
+                    elif 'color_product' in list(action['inform_slots'].keys()) and action['inform_slots']['color_product'] == 'None':
+                        s = 'Dạ, Sản phẩm chỉ có một kiểu vậy thôi ạ.'
                     return s
 
         # DEBUG_PRINT(action)
