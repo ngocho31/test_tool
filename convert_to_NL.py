@@ -33,15 +33,6 @@ agent_intent_list = {
     "unsuitable": "Shop_unsuitable"
 }
 
-product_entity_list = [
-    "name_product",
-    "size_product",
-    "color_product",
-    "material_product",
-    "cost_product",
-    "amount_product"
-]
-
 class ConvertTool:
     """Convert user action to natural language."""
 
@@ -57,11 +48,6 @@ class ConvertTool:
         sentence_list = []
         val_islist = False
         if action['speaker'] == 'User':
-            # # user action does not have inform/request slots
-            # if user_intent_list_none_slot.__contains__(action['intent']):
-            #     # pick random sentence from list
-            #     return random.choice(sentences_none_slot[user_intent_list_none_slot[action['intent']]])
-            # # user action have inform/request slots
             # check intent is valid
             if user_intent_list.__contains__(action['intent']):
                 # find a sentence in NL list have the same slots with user action
@@ -98,8 +84,8 @@ class ConvertTool:
                                 if slot == "weight_customer":
                                     val_str = str(action['inform_slots'][slot]) + 'kg'
                                 elif slot == "height_customer":
-                                    m = int(action['inform_slots'][slot] / 100)
-                                    cm = action['inform_slots'][slot] - 100
+                                    m = int(int(action['inform_slots'][slot]) / 100)
+                                    cm = int(action['inform_slots'][slot]) - 100
                                     val_str = str(m) + 'm' + str(cm)
                                 elif isinstance(action['inform_slots'][slot], list):
                                     val_islist = True
@@ -121,10 +107,6 @@ class ConvertTool:
                     return s
 
         if action['speaker'] == 'Agent':
-            # # agent action does not have inform/request slots
-            # if agent_intent_list_none_slot.__contains__(action['intent']):
-            #     # pick random sentence from list
-            #     return random.choice(sentences_none_slot[agent_intent_list_none_slot[action['intent']]])
             # agent action have inform/request slots
             if agent_intent_list.__contains__(action['intent']):
                 # find a sentence in NL list have the same slots with agent action
@@ -139,6 +121,9 @@ class ConvertTool:
                     action['inform_slots'].pop('material_product', None)
                     action['inform_slots'].pop('amount_product', None)
                     action['inform_slots'].pop('shopping', None)
+                elif ('size_product' in list(action['inform_slots'].keys())) and (isinstance(action['inform_slots']['size_product'], str)):
+                    action['inform_slots'].update({'size_customer': action['inform_slots']['size_product']})
+                    action['inform_slots'].pop('size_product', None)
                 for sentence in NL_db[agent_intent_list[action['intent']]]:
                     match = True
                     NL_list = []
@@ -192,26 +177,20 @@ class ConvertTool:
                     # DEBUG_PRINT(s)
                     if val_islist:
                         if list(action['inform_slots'].keys())[0] == 'size_product':
-                            s = s + ". Bạn mặc size gì ạ?"
+                            s = s + ". Bạn cho mình xin đủ chiều cao, cân nặng, số đo vòng eo để shop tư vấn cho mình size phù hợp nhất nhé?"
                         elif list(action['inform_slots'].keys())[0] == 'color_product':
                             s = s + ". Bạn lấy màu gì ạ?"
                         elif list(action['inform_slots'].keys())[0] == 'cost_product':
                             s = s + ". Bạn muốn tầm giá nào ạ?"
                     elif 'color_product' in list(action['inform_slots'].keys()) and action['inform_slots']['color_product'] == 'None':
-                        s = 'Dạ, Sản phẩm chỉ có một kiểu vậy thôi ạ.'
+                        s = 'Dạ, Sản phẩm chỉ có một màu vậy thôi nha bạn.'
                     return s
 
         # DEBUG_PRINT(action)
-        # save the actions without the corresponding natural language
-        # action_save.append(action)
         return action
 
     # convert action to NL
     def convert_to_nl(self, action):
-        # output.append('Start conversation!\n')
-        # for action in action_list:
-        #     print(action)
-        #     conversation_NL.append(action['speaker'] + ': ' + NLG(action, nl_db) + '\n')
         output = self.NLG(action, self.nl_db)
         return output
 

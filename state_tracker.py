@@ -8,11 +8,12 @@ from utils import convert_list_to_dict
 from db_query import DBQuery
 from dialogue_config import all_intents, all_slots, usersim_default_key
 from dialogue_config import request_product_entity
+from dialogue_config import usersim_intents
 
 class StateTracker:
     """Tracks the state of the episode/conversation and prepares the state representation for the agent."""
 
-    def __init__(self, database, constants):
+    def __init__(self, database, size_database, constants):
         """
         The constructor of StateTracker.
 
@@ -25,7 +26,7 @@ class StateTracker:
 
         """
 
-        self.db_helper = DBQuery(database)
+        self.db_helper = DBQuery(database, size_database)
         self.match_key = usersim_default_key
         self.intents_dict = convert_list_to_dict(all_intents)
         self.num_intents = len(all_intents)
@@ -34,6 +35,7 @@ class StateTracker:
         self.max_round_num = constants['run']['max_round_num']
         self.none_state = np.zeros(self.get_state_size())
         self.reset()
+        self.done = False
 
     def reset(self):
         """Resets current_informs, history and round_num."""
@@ -43,11 +45,11 @@ class StateTracker:
         # A list of the dialogues (dicts) by the agent and user so far in the conversation
         self.history = []
         self.round_num = 0
+        self.done = False
 
     def get_state_size(self):
         """Returns the state size of the state representation used by the agent."""
 
-        # state_size = 2 * self.num_intents + 8 * self.num_slots + self.max_round_num + 3
         state_size = 2 * self.num_intents + 7 * self.num_slots + self.max_round_num + 3
         # DEBUG_PRINT("state_size = ", state_size)
         return state_size
@@ -74,13 +76,13 @@ class StateTracker:
         # DEBUG_PRINT("len history = ", len(self.history))
         # Get last user action
         user_action = self.history[-1]
-        # DEBUG_PRINT(user_action)
+        DEBUG_PRINT(user_action)
         # Check with all slots are informed by user, finding a product in database is exist
         db_results_dict = self.db_helper.get_db_results_for_slots(self.current_informs)
-        # DEBUG_PRINT("db_results_dict = ", db_results_dict)
+        DEBUG_PRINT("db_results_dict = ", db_results_dict)
 
         last_agent_action = self.history[-2] if len(self.history) > 1 else None
-        # DEBUG_PRINT(last_agent_action)
+        DEBUG_PRINT(last_agent_action)
 
         # Create one-hot of intents to represent the current user action
         user_act_rep = np.zeros((self.num_intents,))
@@ -118,11 +120,6 @@ class StateTracker:
             for key in last_agent_action['request_slots'].keys():
                 agent_request_slots_rep[self.slots_dict[key]] = 1.0
 
-        # Create bag of filled_in slots based on the current_requests
-        # current_requests_slots_rep = np.zeros((self.num_slots,))
-        # for key in self.current_requests:
-        #     current_requests_slots_rep[self.slots_dict[key]] = 1.0
-
         # Value representation of the round num
         turn_rep = np.zeros((1,)) + self.round_num / 5.
 
@@ -135,7 +132,7 @@ class StateTracker:
         for key in db_results_dict.keys():
             if key in self.slots_dict:
                 kb_count_rep[self.slots_dict[key]] = db_results_dict[key] / 100.
-        # DEBUG_PRINT(kb_count_rep)
+        DEBUG_PRINT(kb_count_rep)
 
         # Representation of DB query results (binary)
         kb_binary_rep = np.zeros((self.num_slots + 1,)) + np.sum(db_results_dict['matching_all_constraints'] > 0.)
@@ -145,20 +142,17 @@ class StateTracker:
         # DEBUG_PRINT(kb_binary_rep)
 
         state_representation = np.hstack(
-            [user_act_rep, user_inform_slots_rep, user_request_slots_rep, # 6/7/7
-            agent_act_rep, agent_inform_slots_rep, agent_request_slots_rep, # 6/7/7
-            current_informs_slots_rep, # 7
-            # current_requests_slots_rep, # 6/6
-            # current_informs_slots_rep, # 6/6
-            turn_rep, turn_onehot_rep, # 1/20
-            kb_binary_rep, kb_count_rep # 7/7
+            [user_act_rep, user_inform_slots_rep, user_request_slots_rep,
+            agent_act_rep, agent_inform_slots_rep, agent_request_slots_rep,
+            current_informs_slots_rep,
+            turn_rep, turn_onehot_rep,
+            kb_binary_rep, kb_count_rep
             ]).flatten()
         # DEBUG_PRINT("-----state-----")
-        # DEBUG_PRINT(state_representation)
-        # DEBUG_PRINT("size state_representation = ", len(state_representation))
+        DEBUG_PRINT(state_representation)
         return state_representation
 
-    def update_state_user(self, user_action):
+    def update_state_user(self, done, user_action):
         """
         Updates the dialogue history with the user's action and augments the user's action.
 
@@ -174,13 +168,19 @@ class StateTracker:
         # Replace the value if user informed it again.
         for key, value in user_action['inform_slots'].items():
             self.current_informs[key] = value
-        # Keep track all key are requested by user to force agent answer.
-        # Need to delete if agent informed.
-        # for key, value in user_action['request_slots'].items():
-        #     self.current_requests.append(key)
+
         user_action.update({'round': self.round_num, 'speaker': 'User'})
-        self.history.append(user_action)
-        self.round_num += 1
+
+        if user_action['intent'] in usersim_intents:
+            self.history.append(user_action)
+            self.round_num += 1
+
+        if done == True and self.done == False:
+            self.done = True
+        elif done == False and self.done == True:
+            self.done = False
+            done = True
+        return done
 
 
     """Warmup phase."""
@@ -234,30 +234,17 @@ class StateTracker:
             key, value = list(agent_action['inform_slots'].items())[0]  # Only one
             assert key != 'match_found'
             assert value != 'PLACEHOLDER', 'KEY: {}'.format(key)
-            # if key == 'amount_product':
-            #     if value == 'no match available':
-            #         value = 0
-            #     else:
-            #         value = 1
-            #         agent_action['inform_slots'][key] = value
+
             if type(value) != list and value != 'no match available':
                 self.current_informs[key] = value
-            # for slot in agent_action['inform_slots']:
-            #     if self.current_requests.__contains__(slot):
-            #         self.current_requests.remove(slot)
         # If intent is match_found then fill the action informs with the matched informs (if there is a match)
         elif agent_action['intent'] == 'match_found':
             assert not agent_action['inform_slots'], 'Cannot inform and have intent of match found!'
             db_results = self.db_helper.get_db_results(self.current_informs)
             if db_results:
                 # Arbitrarily pick the first value of the dict
-                # dict_items = db_results[0]
                 dict_items = random.choice(db_results)
                 agent_action['inform_slots'] = copy.deepcopy(dict_items)
-                # if 'amount_product' not in list(self.current_informs.keys()):
-                #     agent_action['inform_slots'].pop('amount_product')
-                # else:
-                #     agent_action['inform_slots'].update({'amount_product': self.current_informs['amount_product']})
                 agent_action['inform_slots'][self.match_key] = str(agent_action['inform_slots'])
             else:
                 agent_action['inform_slots'][self.match_key] = 'no match available'
@@ -282,5 +269,3 @@ class StateTracker:
         """
 
         self.update_state_agent_train(agent_action)
-        # agent_action.update({'round': self.round_num, 'speaker': 'Agent'})
-        # self.history.append(agent_action)

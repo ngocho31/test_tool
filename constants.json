@@ -1,6 +1,7 @@
 {
   "db_file_paths": {
-    "database": "data/hume_db.json"
+    "database": "data/hume_db.json",
+    "size_database": "data/hume_size_db.json"
   },
   "run": {
     "max_round_num": 20

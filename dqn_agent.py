@@ -138,8 +138,6 @@ class DQNAgent:
         weights = model.layers[1].get_weights()[0]
         biases = model.layers[1].get_weights()[1]
 
-        # print("initial weights =", weights)
-        # print("initial biases =", biases)
         return model
 
     def _dqn_predict(self, states, target=False):
@@ -374,8 +372,6 @@ class DQNAgent:
 
         prop = self._dqn_predict_one(state)
         # DEBUG_PRINT("prop action = ", prop)
-        # SAVE_LOG("state = ", state, filename='test.log')
-        # SAVE_LOG("prop action = ", prop, filename='test.log')
         index = np.argmax(self._dqn_predict_one(state))
         action = self._map_index_to_action(index)
         return index, action

@@ -3,94 +3,24 @@
         {
             "request_slots": [],
             "inform_slots": [],
-            "text": "dạ chị cần tư vấn gì ạ"
+            "text": "Cảm ơn bạn đã quan tâm đến shop, bạn cần shop tư vấn sản phẩm nào ạ"
         },
         {
             "request_slots": [],
             "inform_slots": [],
-            "text": "dạ c cần tư vấn gì ạ"
+            "text": "Cảm ơn bạn đã quan tâm đến shop, bạn cần shop hỗ trợ gì ạ"
         },
         {
             "request_slots": [],
             "inform_slots": [],
-            "text": "Xin chào! Hân hạnh được đón tiếp bạn!"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chào chị"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chị cần tư vấn gì ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "Dạ chị cần shop tư vấn và hỗ trợ gì ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "hii"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chào chị"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chị cần tư vấn gì ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chị cần tư vấn gì ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chào chị"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "Dạ mình cần shop hỗ trợ gì ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "Dạ mình cần shop hỗ trợ gì ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "Dạ e chào c"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ chị cần tư vấn gì a"
+            "text": "Chào bạn ạ, bạn cần shop hỗ trợ gì ạ"
         }
     ],
     "Shop_Done": [
         {
             "request_slots": [],
             "inform_slots": [],
-            "text": "dạ e cám ơn c yêu nhiều ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "Chúc c một ngày vv nha"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [],
-            "text": "dạ bye chị"
+            "text": "Chân thành cảm ơn bạn iu đã tin tưởng và đặt hàng ạ. Chúc bạn một ngày vv nha"
         },
         {
             "request_slots": [],
@@ -99,6 +29,48 @@
         }
     ],
     "Shop_request": [
+        {
+            "request_slots": [
+                "waist_customer"
+            ],
+            "inform_slots": [],
+            "text": "cho e xin số đo vòng eo của b, e tư vấn cho mình size phù hợp ạ."
+        },
+        {
+            "request_slots": [
+                "waist_customer"
+            ],
+            "inform_slots": [],
+            "text": "cho e xin số đo vòng eo e tư vấn size ạ"
+        },
+        {
+            "request_slots": [
+                "weight_customer"
+            ],
+            "inform_slots": [],
+            "text": "cho e xin cân nặng của b, e tư vấn cho mình size phù hợp ạ."
+        },
+        {
+            "request_slots": [
+                "weight_customer"
+            ],
+            "inform_slots": [],
+            "text": "dạ c cho e xin cân nặng e tư vấn size ạ"
+        },
+        {
+            "request_slots": [
+                "height_customer"
+            ],
+            "inform_slots": [],
+            "text": "dạ c cho e xin chiều cao e tư vấn size ạ"
+        },
+        {
+            "request_slots": [
+                "height_customer"
+            ],
+            "inform_slots": [],
+            "text": "cho e xin chiều cao của mình, e tư vấn cho mình size phù hợp ạ."
+        },
         {
             "request_slots": [
                 "color_product"
@@ -139,6 +111,13 @@
                 "name_product"
             ],
             "inform_slots": [],
+            "text": "dạ chị cần tư vấn sản phẩm nào vậy ạ"
+        },
+        {
+            "request_slots": [
+                "name_product"
+            ],
+            "inform_slots": [],
             "text": "chị chụp mẫu gửi shop shop tư vấn cho chị ạ"
         },
         {
@@ -167,7 +146,7 @@
                 "name_product"
             ],
             "inform_slots": [],
-            "text": "c gửi  lại mẫu giúp e nha"
+            "text": "c gửi lại mẫu giúp e nha"
         },
         {
             "request_slots": [
@@ -181,24 +160,65 @@
                 "name_product"
             ],
             "inform_slots": [],
-            "text": "Mẫu nào c ơi"
-        },
-        {
-            "request_slots": [
-                "name_product"
-            ],
-            "inform_slots": [],
-            "text": "Dạ c biết mã bn k ạ"
-        },
-        {
-            "request_slots": [
-                "name_product"
-            ],
-            "inform_slots": [],
             "text": "mình vui lòng chụp sản phẩm giúp e ạ"
         }
     ],
     "Shop_inform": [
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    6,
+                    7,
+                    "size_customer"
+                ]
+            ],
+            "text": "b mặc L là ok ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    8,
+                    9,
+                    "size_customer"
+                ]
+            ],
+            "text": "Có size L phù hợp vs chị ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    11,
+                    13,
+                    "size_customer"
+                ]
+            ],
+            "text": "C mặc size XL là chuẩn xinh nha"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    18,
+                    19,
+                    "size_customer"
+                ]
+            ],
+            "text": "dạ sản phẩm có sz L phù hợp với b ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    14,
+                    15,
+                    "size_customer"
+                ]
+            ],
+            "text": "dạ b mặc size L là vừa xinh lắm ạ"
+        },
         {
             "request_slots": [],
             "inform_slots": [
@@ -258,12 +278,12 @@
             "request_slots": [],
             "inform_slots": [
                 [
-                    8,
                     12,
+                    16,
                     "color_product"
                 ]
             ],
-            "text": "set còn nude ạ"
+            "text": "set còn màu nude ạ"
         },
         {
             "request_slots": [],
@@ -285,18 +305,18 @@
                     "size_product"
                 ]
             ],
-            "text": "dạ sản phẩm có sz L"
+            "text": "dạ sản phẩm có sz L là phù hợp với b ạ."
         },
         {
             "request_slots": [],
             "inform_slots": [
                 [
-                    4,
-                    8,
+                    14,
+                    18,
                     "color_product"
                 ]
             ],
-            "text": "còn hồng ạ"
+            "text": "dạ sp còn màu hồng ạ"
         },
         {
             "request_slots": [],
@@ -308,17 +328,6 @@
                 ]
             ],
             "text": "còn ạ"
-        },
-        {
-            "request_slots": [],
-            "inform_slots": [
-                [
-                    4,
-                    8,
-                    "color_product"
-                ]
-            ],
-            "text": "màu xanh á chị"
         },
         {
             "request_slots": [],
@@ -371,7 +380,14 @@
                 "size_product"
             ],
             "inform_slots": [],
-            "text": "sr b ạ, dạ bên e hết size phù hợp cho sp b yêu cầu rồi ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
+            "text": "sr b ạ, dạ bên e sp không có kích thước phù hợp với b rồi ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
+        },
+        {
+            "request_slots": [
+                "shopping"
+            ],
+            "inform_slots": [],
+            "text": "sr khách iu, bên e không có sản phẩm b yêu cầu ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
         },
         {
             "request_slots": [
@@ -385,14 +401,14 @@
                 "color_product"
             ],
             "inform_slots": [],
-            "text": "b ơi bên shop ko có màu b yêu cầu rồi ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
+            "text": "b ơi bên shop ko có sản phẩm b yêu cầu rồi ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
         },
         {
             "request_slots": [
                 "cost_product"
             ],
             "inform_slots": [],
-            "text": "dạ b ơi, bên e ko có sản phẩm giá phù hợp yêu cầu của b rồi ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
+            "text": "dạ b ơi, bên e ko có sản phẩm b yêu cầu ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
         },
         {
             "request_slots": [
@@ -406,14 +422,14 @@
                 "name_product"
             ],
             "inform_slots": [],
-            "text": "dạ b không có mẫu này ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
+            "text": "dạ b ơi, s không có mẫu này ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
         },
         {
             "request_slots": [
                 "name_product"
             ],
             "inform_slots": [],
-            "text": "dạ bạn bên em ko có sản phẩm này ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
+            "text": "dạ bạn, bên em ko có sản phẩm này ạ. b vui lòng tham khảo các sản phẩm khác của shop nha"
         },
         {
             "request_slots": [
@@ -461,6 +477,74 @@
             "request_slots": [],
             "inform_slots": [
                 [
+                    21,
+                    27,
+                    "name_product"
+                ],
+                [
+                    34,
+                    35,
+                    "size_product"
+                ],
+                [
+                    59,
+                    63,
+                    "cost_product"
+                ]
+            ],
+            "text": "dạ shop lấy cho mình áo abc, size S nha b. Giá sản phẩm là 206k chưa bao gồm phí ship ạ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    36,
+                    41,
+                    "name_product"
+                ],
+                [
+                    49,
+                    50,
+                    "size_product"
+                ],
+                [
+                    56,
+                    60,
+                    "color_product"
+                ],
+                [
+                    84,
+                    88,
+                    "cost_product"
+                ]
+            ],
+            "text": "dạ shop gửi mình thông tin sản phẩm áo abc, size S, màu xanh nha b. Giá sản phẩm là 206k chưa bao gồm phí ship ạ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    36,
+                    41,
+                    "name_product"
+                ],
+                [
+                    49,
+                    50,
+                    "size_product"
+                ],
+                [
+                    74,
+                    78,
+                    "cost_product"
+                ]
+            ],
+            "text": "dạ shop gửi mình thông tin sản phẩm áo abc, size S nha b. Giá sản phẩm là 206k chưa bao gồm phí ship ạ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
                     29,
                     35,
                     "name_product"
@@ -477,9 +561,228 @@
                 ]
             ],
             "text": "dạ shop chốt đơn cho mình là áo abc, size S ạ. Giá sản phẩm là 206k chưa bao gồm phí ship ạ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    29,
+                    35,
+                    "name_product"
+                ],
+                [
+                    42,
+                    43,
+                    "size_product"
+                ],
+                [
+                    49,
+                    53,
+                    "color_product"
+                ],
+                [
+                    73,
+                    77,
+                    "cost_product"
+                ]
+            ],
+            "text": "dạ shop chốt đơn cho mình là áo abc, size S, màu xanh ạ. Giá sản phẩm là 206k chưa bao gồm phí ship ạ."
+        }
+    ],
+    "Hello": [
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "chào shop"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "alo shop"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "shop ơi"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "hello shop"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "bạn ơi"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "hé lu shop"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [],
+            "text": "xin chào shop ạ"
         }
     ],
     "Inform": [
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "height_customer"
+                ],
+                [
+                    15,
+                    19,
+                    "weight_customer"
+                ],
+                [
+                    24,
+                    26,
+                    "waist_customer"
+                ]
+            ],
+            "text": "Cao 1m58, nặng 52kg, eo 72 ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "height_customer"
+                ],
+                [
+                    13,
+                    15,
+                    "waist_customer"
+                ]
+            ],
+            "text": "Cao 1m58, eo 72 ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "weight_customer"
+                ],
+                [
+                    9,
+                    11,
+                    "waist_customer"
+                ]
+            ],
+            "text": "52kg, eo 72 ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    8,
+                    10,
+                    "waist_customer"
+                ]
+            ],
+            "text": "Eo mình 46 ạ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    28,
+                    32,
+                    "height_customer"
+                ],
+                [
+                    41,
+                    45,
+                    "weight_customer"
+                ]
+            ],
+            "text": "Shop tv giúp m vs. Mình cao 1m.47m. Nặng 40kg ạ."
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    3,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m2 shop ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    6,
+                    9,
+                    "height_customer"
+                ]
+            ],
+            "text": "m cao 1m2"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m52 ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "weight_customer"
+                ]
+            ],
+            "text": "43kg ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    0,
+                    5,
+                    "weight_customer"
+                ],
+                [
+                    6,
+                    10,
+                    "height_customer"
+                ]
+            ],
+            "text": "56 kí 1m45 ạ"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    10,
+                    15,
+                    "weight_customer"
+                ],
+                [
+                    20,
+                    24,
+                    "height_customer"
+                ]
+            ],
+            "text": "Mình nặng 55 kí cao 1m45 ạ"
+        },
         {
             "request_slots": [],
             "inform_slots": [
@@ -720,7 +1023,286 @@
             "text": "mình cần sz nhỏ ạ"
         }
     ],
+    "Order": [
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    15,
+                    23,
+                    "name_product"
+                ]
+            ],
+            "text": "shop cho e đặt đầm caro nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    15,
+                    23,
+                    "name_product"
+                ]
+            ],
+            "text": "shop cho e đặt đầm caro nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    10,
+                    18,
+                    "name_product"
+                ]
+            ],
+            "text": "lấy cho e đầm caro shop nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    10,
+                    17,
+                    "name_product"
+                ]
+            ],
+            "text": "cho e đặt set váy nhé "
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    6,
+                    8,
+                    "amount_product"
+                ]
+            ],
+            "text": "c lấy 10 cái"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    9,
+                    11,
+                    "amount_product"
+                ]
+            ],
+            "text": "giao cho 10 cái nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    10,
+                    11,
+                    "amount_product"
+                ],
+                [
+                    12,
+                    20,
+                    "name_product"
+                ]
+            ],
+            "text": "Cho e lấy 1 set vest nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    38,
+                    39,
+                    "amount_product"
+                ],
+                [
+                    14,
+                    27,
+                    "name_product"
+                ]
+            ],
+            "text": "cho e đặt mẫu set trắng nút, số lượng 3 nhé"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    6,
+                    7,
+                    "amount_product"
+                ],
+                [
+                    8,
+                    20,
+                    "name_product"
+                ],
+                [
+                    27,
+                    28,
+                    "size_product"
+                ]
+            ],
+            "text": "lấy e 1 set trắng nút size l"
+        },
+        {
+            "request_slots": [],
+            "inform_slots": [
+                [
+                    10,
+                    23,
+                    "name_product"
+                ],
+                [
+                    29,
+                    30,
+                    "size_product"
+                ]
+            ],
+            "text": "Cho e đặt đầm body lưới size M"
+        }
+    ],
     "Request": [
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    4,
+                    8,
+                    "height_customer"
+                ],
+                [
+                    15,
+                    19,
+                    "weight_customer"
+                ],
+                [
+                    24,
+                    26,
+                    "waist_customer"
+                ]
+            ],
+            "text": "Cao 1m58, nặng 52kg, eo 72 mặc size gì e?"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    8,
+                    10,
+                    "waist_customer"
+                ]
+            ],
+            "text": "Eo mình 46 ạ có vừa ko s."
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    23,
+                    29,
+                    "height_customer"
+                ],
+                [
+                    36,
+                    40,
+                    "weight_customer"
+                ]
+            ],
+            "text": "Shop tv giúp m vs. Cao 1m.47m. Nặng 40kg có sz vừa ko ạ."
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    3,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m2 vừa ko s"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    6,
+                    9,
+                    "height_customer"
+                ]
+            ],
+            "text": "m cao 1m2 có được ko"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "height_customer"
+                ]
+            ],
+            "text": "1m52 mặc vừa kg shop"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    4,
+                    "weight_customer"
+                ]
+            ],
+            "text": "43kg mặc vừa kg shop"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    0,
+                    5,
+                    "weight_customer"
+                ],
+                [
+                    6,
+                    10,
+                    "height_customer"
+                ]
+            ],
+            "text": "56 kí 1m45 vừa k s"
+        },
+        {
+            "request_slots": [
+                "size_product"
+            ],
+            "inform_slots": [
+                [
+                    8,
+                    13,
+                    "weight_customer"
+                ],
+                [
+                    14,
+                    18,
+                    "height_customer"
+                ]
+            ],
+            "text": "Cái này 55 kí 1m45 vưa k e"
+        },
         {
             "request_slots": [
                 "color_product"
@@ -740,14 +1322,14 @@
                 "material_product"
             ],
             "inform_slots": [],
-            "text": "làm bằng j e"
+            "text": "cho mình coi chất liệu vải đi ạ"
         },
         {
             "request_slots": [
                 "material_product"
             ],
             "inform_slots": [],
-            "text": "chất liệu j z"
+            "text": "sp chất liệu j z shop"
         },
         {
             "request_slots": [
@@ -1115,7 +1697,7 @@
                     "name_product"
                 ]
             ],
-            "text": "Áo len mickey có size Ko ạ"
+            "text": "Áo len mickey có size gì ạ"
         },
         {
             "request_slots": ["size_product"],
@@ -1356,7 +1938,7 @@
         {
             "request_slots": [],
             "inform_slots": [],
-            "text": "Không, cho mình thông tin khác đi"
+            "text": "cho mình thông tin khác đi bạn"
         }
     ],
     "Done": [
